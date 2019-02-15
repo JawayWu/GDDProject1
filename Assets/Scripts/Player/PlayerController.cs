@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAttackInfo[] m_Attacks;
     [SerializeField]
     private HUD m_Hud;
+    private float realSpeed;
     #endregion
     #region Private Variables
     private Vector2 p_Velocity;
@@ -197,6 +198,11 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("HealthPill"))
         {
             IncreaseHealth(other.GetComponent<HealthPill>().HealthGain);
+            Destroy(other.gameObject);
+        }
+        if (other.CompareTag("SpeedPill"))
+        {
+            m_Speed = m_Speed + other.GetComponent<SpeedPill>().SpeedGain;
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Start"))

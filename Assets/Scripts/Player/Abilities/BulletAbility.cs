@@ -20,12 +20,17 @@ public class BulletAbility : Ability
     {
         if(other.CompareTag("Player"))
         {
-            return;
+            other.GetComponent<PlayerController>().DecreaseHealth(Power);
         }
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<EnemyController>().DecreaseHealth(Power);
         }
+        if (other.CompareTag("Ranged"))
+        {
+            other.GetComponent<RangedController>().DecreaseHealth(Power);
+        }
+
         ParticleSystem ps = Instantiate(m_DeathExplosion, transform.position, Quaternion.identity);
         Destroy(ps.gameObject, 3f); // 3f = 3 seconds
         Destroy(gameObject, 0.1f);

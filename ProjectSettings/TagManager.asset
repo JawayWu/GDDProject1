@@ -10,6 +10,8 @@ TagManager:
   - AttackAbility
   - Enemy
   - Spawn
+  - Ranged
+  - SpeedPill
   layers:
   - Default
   - TransparentFX
